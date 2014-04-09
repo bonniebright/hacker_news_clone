@@ -1,0 +1,20 @@
+<h2> Create a new post on News Craze! </h2>
+
+<br />
+<br />
+
+<div class="well">
+
+<%= form_for(@post) do |f| %>
+<div class="form-group">
+<%= f.label :title %>
+<%= f.text_field :post %>
+<%= f.label :link %>
+<%= f.text_field :link %>
+<%= f.hidden_field :votes, :value => 1 %>
+<br />
+<%= f.submit(:class => "btn btn-primary") %>
+</div>
+<% end %>
+</form>
+</div>

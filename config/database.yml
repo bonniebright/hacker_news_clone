@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  database: hacker_clone_development
+
+test:
+  adapter: postgresql
+  database: hacker_clone_test
+

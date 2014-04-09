@@ -1,0 +1,17 @@
+<h2> Welcome to News Craze! </h2>
+
+<ul>
+  <% @posts.order(votes: :desc).each do |post| %>
+    <li> <%= link_to post.post, post.link %> </li>
+      <ul>
+        <li> <%= "#{post.votes}" %> <%= link_to "votes", post_path(post) %></li>
+      </ul>
+      <div id="sub-nav-container">
+        <ul id="sub-nav-bar">
+        <li class="sub-nav-bar-edit"> <%= link_to "Edit this post", edit_post_path(post), :class => "btn btn-default" %> -- <%= link_to "Delete this post", post_path(post),
+                         :confirm => "You sure?",
+                         :method => "delete",
+                         :class => "btn btn-danger" %> -- <%= link_to "#{post.comments.length} comments", post_path(post)%> </li> <br><br>
+      </ul>
+  <% end %>
+</ul>

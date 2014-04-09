@@ -1,0 +1,30 @@
+<h2> <%= @post.post %> </h2>
+
+<%= form_for(@post) do |f| %>
+  <%= f.hidden_field :post, :value => @post.post %>
+  <%= f.hidden_field :link, :value => @post.link %>
+  <%= f.hidden_field :votes, :value => @post.votes + 1 %>
+  <%= f.submit "Vote Up This Post" %>
+<% end %>
+
+<h4> Post a new comment: </h4>
+<div class="well">
+
+<%= form_for(@comment) do |f| %>
+<div class="form-group">
+<%= f.label :comment %>
+<%= f.text_area :comment, :cols => 50, :rows => 6%>
+<%= f.hidden_field :post_id, :value => @post.id %>
+<br />
+<%= f.submit(:class => "btn btn-primary") %>
+</div>
+<% end %>
+</form>
+</div>
+
+<h4> Comments : </h4>
+<ol>
+  <% @comments.each do |comment| %>
+   <li> <%= comment.comment %> @  <%= comment.created_at.strftime("%I:%M:%P") %> </li>
+  <% end %>
+</ol>
